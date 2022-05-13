@@ -1,0 +1,19 @@
+#users-table{
+  th{
+    vertical-align:middle;
+  }
+  
+  td{
+    vertical-align:middle;
+  }
+}
+
+
+#user-table{
+  table-layout: fixed; width: 100%;
+  th{
+    text-align:center;
+    vertical-align:middle;
+    white-space:normal;
+  }
+}
