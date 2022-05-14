@@ -1,10 +1,11 @@
 <% provide(:title, "Top") %>
 
 <div class="row">
-  <div class="col-md-10 col-md-offset-1" >
+  <div class="col-md-7" >
    <div class="center jumbotron" id="top-main">
     <h1 id="top-main-title">授業紹介アプリ</h1>
-    <p>授業紹介アプリは、大学生が大学の授業やゼミなどを紹介してくれるアプリです。</p>
+    <p>授業紹介アプリは、大学生が大学の授業やゼミなどを<br>
+    紹介してくれるアプリです。</p>
     <p>↓↓初めてのご利用↓↓</p>
     <% if logged_in? %>
       <% if current_user.admin? %>
@@ -21,6 +22,16 @@
       </div>
     <% end %>
    </div>
+  </div>
+  <div class="col-md-5" >
+    <div class="center jumbotron" id="top-sub">
+    <p class="to-students">↓↓大学生の方はこちら↓↓</p>
+      <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-primary btn-lg" %>
+    <p>※高校生の方も投稿は可能です</p>
+    <p class="to-students">↓↓高校生の方はこちら↓↓</p>
+    　<%=link_to "授業の投稿を見る", all_path,  class:"btn btn-primary btn-lg" %>
+    <p>※大学生の方も投稿を見ることが可能です。</p>
+    </div>
   </div>
 </div>
 
