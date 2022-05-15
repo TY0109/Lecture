@@ -7,9 +7,9 @@
         </div>
         <div class="post-right">
           <div class="post-user-name">
-            <%= link_to(post.user.name, "/users/#{post.user.id}") %>
+            <%= link_to post.user.name, user_path(post.user) %>
           </div>
-          <%= link_to(post.title, "/users/#{post.user.id}/posts/#{post.id}") %>
+          <%= link_to post.title, user_post_path(post.user, post) %>
         </div>
       </div>
     <% end %>

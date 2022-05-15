@@ -14,6 +14,9 @@ ja:
           updated_at: 更新日
         post:
           id: ID
+          university: 大学名
+          department: 学部名
+          branch: 学科名
           title: 授業名
           description: 詳細
           created_at: 作成日
