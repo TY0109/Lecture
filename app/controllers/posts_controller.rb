@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   before_action :set_user, only:[:index, :new, :create, :show, :edit, :update, :destroy]
   before_action :set_post, only:[:show, :edit, :update, :destroy]
   before_action :logged_in_user
-  before_action :correct_user, only:[:new, :create, :edit, :update, :destroy]
-  before_action :admin_user, only:[:destory]
+  before_action :correct_user, only:[:new, :create, :edit, :update]
+  before_action :admin_or_correct_user, only:[:destory]
   
   
   def all
@@ -56,7 +56,7 @@ class PostsController < ApplicationController
   private
   
     def post_params
-      params.require(:post).permit(:title, :description,:user_id)
+      params.require(:post).permit(:university, :department, :branch, :title, :description,:user_id)
     end
     
     def set_user
