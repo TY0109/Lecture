@@ -59,7 +59,7 @@
        <% end %>
        <%=@likes_count %>
      <% end %>
-     <% else %>
+     <% unless current_user.admin? %>
        <% if @post.like?(current_user) %>
          <%= link_to user_post_like_path(@user, @post), method: :delete do %>
            <span class="fa fa-heart liked-btn">︎</span>
