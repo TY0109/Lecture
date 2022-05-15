@@ -12,9 +12,14 @@ Rails.application.routes.draw do
   post 'guest_admin_login', to: "guest_admin_sessions#create"
   
   
+  
+  
   resources :users do
-    resources :posts
+    resources :posts do
+       resources :likes, only: [:create, :destroy]
+    end
   end
+  
   
   
 end
