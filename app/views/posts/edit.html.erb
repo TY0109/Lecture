@@ -2,7 +2,7 @@
 <h1>投稿編集</h1>
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <%= form_with(model:@post,url:user_post_path(@user,@post),mehod: :patch ,local: true) do |f| %>
+    <%= form_with(model:@post,url:post_path(@post),mehod: :patch ,local: true) do |f| %>
       <%= render 'shared/error_messages',object:f.object %>
       
       <%= f.label:university, class: "label-form" %>
@@ -23,7 +23,7 @@
       
 
       <%= f.submit "更新", class: "btn btn-primary btn-form" %>
-      <%= link_to "キャンセル",user_posts_path(@user),class: "btn btn-default btn-form" %>
+      <%= link_to "キャンセル",posts_path,class: "btn btn-default btn-form" %>
     <% end %>
     
   </div>

@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+  include GuestSessionsHelper
+  
   before_action :set_post, only:[:show, :edit, :update, :destroy]
   before_action :logged_in_user
-  before_action :admin_or_correct_user, only:[:edit, :destory]
+  before_action :admin_or_limitation_correct_user, only:[:edit, :update, :destroy]
   
   
   def index
@@ -53,6 +55,19 @@ class PostsController < ApplicationController
     end
     
     
+    def set_post
+      @post=Post.find(params[:id])
+    end
+    
+    
+    def admin_or_limitation_correct_user
+      @post=Post.find(params[:id])
+      unless @post.user_id==current_user.id  || ! current_use.admin?
+        flash[:notice]="自分以外のユーザーの投稿は編集できません"
+        redirect_to posts_url
+      end
+    end
+      
     
     
     
