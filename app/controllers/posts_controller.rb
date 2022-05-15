@@ -7,7 +7,8 @@ class PostsController < ApplicationController
   
   
   def all
-    @posts=Post.all
+    @search=Post.ransack(params[:q])
+    @posts=@search.result
   end
   
   
