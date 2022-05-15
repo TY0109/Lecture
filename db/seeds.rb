@@ -4,6 +4,17 @@ User.create!(name: "管理人",
              password_confirmation: "password" ,
              admin:true)
              
+User.create!(name: "ゲスト管理人",
+             email: "guest_admin@email.com",
+             password: "password",
+             password_confirmation: "password" ,
+             admin:true)
+
+User.create!(name: "ゲストユーザー",
+             email: "guest@email.com",
+             password: "password",
+             password_confirmation: "password")
+             
 User.create!(name: "大学生1",
              email: "sampleA@email.com",
              password: "password",
@@ -32,12 +43,16 @@ User.create!(name: "高校生2",
 
 Post.create!(title: "マクロ経済A",
             description: "財政政策や金融政策の効果について学びます",
-            user_id:2)
+            user_id:4)
+
+Post.create!(title: "微分積分",
+            description: "数学を使って、経済モデルを分析します",
+            user_id:4)
             
 
 Post.create!(title: "ミクロ経済A",
             description: "消費者や企業の行動ついて学びます",
-            user_id:3)
+            user_id:5)
             
 
 

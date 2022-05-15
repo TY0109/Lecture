@@ -17,8 +17,8 @@
     <% else %>
       <%=link_to "アカウント作成", signup_path, class:"btn btn-lg btn-success" %>
       <div style="margin-top:10px">
-        <%=link_to "ゲストログイン（管理権限）", '#', class:"btn btn-lg btn-danger" , id:"btn-top-admin" %>
-        <%=link_to "ゲストログイン（一般権限）", '#', class:"btn btn-lg btn-warning" , id:"btn-top-general" %>
+        <%=link_to "ゲストログイン（管理権限）", guest_admin_login_path, method: :post, class:"btn btn-lg btn-danger" , id:"btn-top-admin" %>
+        <%=link_to "ゲストログイン（一般権限）", guest_login_path, method: :post,  class:"btn btn-lg btn-warning" , id:"btn-top-general" %>
       </div>
     <% end %>
    </div>

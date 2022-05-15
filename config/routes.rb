@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   
   get 'all', to: 'posts#all'
   
+  post 'guest_login', to: "guest_sessions#create"
+  post 'guest_admin_login', to: "guest_admin_sessions#create"
+  
   resources :users do
     resources :posts
   end
