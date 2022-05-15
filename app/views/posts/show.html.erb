@@ -30,8 +30,10 @@
       </tbody>
      </table>
      <div class="btn-wrapper">
+     <% if current_user?(@user) || current_user.admin? %>
       <%=link_to "編集",edit_user_post_path,class:"btn btn-lg btn-success" %>
       <%=link_to "削除",user_post_path, method: :delete, data:{confirm:"「#{@post.title}」を削除します。よろしいですか？"},class:"btn btn-lg btn-danger" %>
+     <% end %>
      </div>
      
     </div>

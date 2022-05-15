@@ -6,9 +6,10 @@ class GuestAdminSessionsController < ApplicationController
       user.name="ゲスト管理人"
     end
       session[:user_id]=user.id
-      flash[:success]="ゲストユーザーとしてログインしました"
-      redirect_to user
+      flash[:success]="ゲスト管理人としてログインしました"
+      redirect_to root_url
   end
   
   
+
 end

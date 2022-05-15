@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :set_user, only:[:index, :new, :create, :show, :edit, :update, :destroy]
   before_action :set_post, only:[:show, :edit, :update, :destroy]
   before_action :logged_in_user
-  before_action :correct_user, only:[:index, :new, :create, :show, :edit, :update, :destroy]
+  before_action :correct_user, only:[:new, :create, :edit, :update, :destroy]
+  before_action :admin_user, only:[:destory]
   
   
   def all

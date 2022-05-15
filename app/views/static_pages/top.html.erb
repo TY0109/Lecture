@@ -3,16 +3,15 @@
 <div class="row">
   <div class="col-md-7" >
    <div class="center jumbotron" id="top-main">
-    <h1 id="top-main-title">授業紹介アプリ</h1>
-    <p>授業紹介アプリは、大学生が大学の授業やゼミなどを<br>
+    <h1 id="top-main-title">unipass</h1>
+    <p>unipassは、大学生が大学の授業やゼミなどを<br>
     紹介してくれるアプリです。</p>
     <p>↓↓初めてのご利用↓↓</p>
     <% if logged_in? %>
       <% if current_user.admin? %>
         <%= link_to "アカウント作成", signup_path, class: "btn btn-lg btn-success" %>
-      <% end %>
-      <% unless current_user.admin? %>
-        <%= link_to "アカウント作成", signup_path, class: "btn btn-lg btn-success" , disabled:true %>
+      <% else  %>
+        <%= link_to "アカウント作成", '#', class: "btn btn-lg btn-success" , disabled:true %>
       <% end %>
     <% else %>
       <%=link_to "アカウント作成", signup_path, class:"btn btn-lg btn-success" %>
@@ -25,12 +24,25 @@
   </div>
   <div class="col-md-5" >
     <div class="center jumbotron" id="top-sub">
-    <p class="to-students">↓↓大学生の方はこちら↓↓</p>
-      <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-primary btn-lg" %>
-    <p>※高校生の方も投稿は可能です</p>
-    <p class="to-students">↓↓高校生の方はこちら↓↓</p>
-    　<%=link_to "授業の投稿を見る", all_path,  class:"btn btn-primary btn-lg" %>
-    <p>※大学生の方も投稿を見ることが可能です。</p>
+    <% if logged_in? %>
+      <p class="to-students">↓↓大学生の方はこちら↓↓</p>
+        <% unless current_user.admin? %>
+          <%=link_to "授業の紹介を投稿する", new_user_post_path(current_user), class:"btn btn-primary btn-lg" %>
+        <% else %>
+          <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-primary btn-lg", disabled:true %>
+        <% end %>
+      <p>※高校生の方も投稿できます</p>
+        <p class="to-students">↓↓高校生の方はこちら↓↓</p>
+          <%=link_to "授業の投稿を見る", all_path, class:"btn btn-primary btn-lg" %>
+        <p>※大学生の方も閲覧できます。</p>
+    <% else %>
+      <p class="to-students">↓↓大学生の方はこちら↓↓</p>
+        <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-primary btn-lg", disabled:true %>
+      <p>※高校生の方も投稿可能です</p>
+      <p class="to-students">↓↓高校生の方はこちら↓↓</p>
+        <%=link_to "授業の投稿を見る", '#', class:"btn btn-primary btn-lg", disabled:true %>
+      <p>※大学生の方も閲覧可能です。</p>
+    <% end %>
     </div>
   </div>
 </div>

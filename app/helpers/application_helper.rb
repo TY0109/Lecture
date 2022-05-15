@@ -1,6 +1,6 @@
 module ApplicationHelper
   def full_title(page_name="")
-    base_title="授業紹介アプリ"
+    base_title="unipass"
     if page_name.empty?
       base_title
     else

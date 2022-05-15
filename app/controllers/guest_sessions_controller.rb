@@ -7,8 +7,10 @@ class GuestSessionsController < ApplicationController
     end
       session[:user_id]=user.id
       flash[:success]="ゲストユーザーとしてログインしました"
-      redirect_to user
+      redirect_to root_url
   end
+  
+  
   
   
 end
