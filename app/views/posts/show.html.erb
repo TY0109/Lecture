@@ -47,19 +47,31 @@
       <%=link_to "削除",user_post_path, method: :delete, data:{confirm:"「#{@post.title}」を削除します。よろしいですか？"},class:"btn btn-lg btn-danger" %>
      <% end %>
      
-     <% if @post.like?(current_user) %>
-       <%= link_to user_post_like_path(@user, @post), method: :delete do %>
-        <span class="fa fa-heart liked-btn">︎</span>
+     <% if current_user.admin? %>
+       <% if @post.like?(current_user) %>
+         <%= link_to '#', disabled:true do %>
+           <span class="fa fa-heart liked-btn">︎</span>
+         <% end %>
+       <% else %>
+         <%=link_to '#', disabled:true do %>
+           <span class="fa fa-heart unliked-btn">️</span>
+         <% end %>
        <% end %>
-     <% else %>
-       <%=link_to user_post_likes_path(@user, @post), method: :post do %>
-         <span class="fa fa-heart unliked-btn">️</span>
-       <% end %>
+       <%=@likes_count %>
      <% end %>
-     
-     <%=@likes_count %>
+     <% else %>
+       <% if @post.like?(current_user) %>
+         <%= link_to user_post_like_path(@user, @post), method: :delete do %>
+           <span class="fa fa-heart liked-btn">︎</span>
+         <% end %>
+       <% else %>
+         <%=link_to user_post_likes_path(@user, @post), method: :post do %>
+           <span class="fa fa-heart unliked-btn">️</span>
+         <% end %>
+       <% end %>
+       <%=@likes_count %>
+     <% end %>
      </div>
-     
     </div>
   </div>
 </div>
