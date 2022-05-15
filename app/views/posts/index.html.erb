@@ -1,32 +1,23 @@
-<% provide(:title, @user.name) %>
-
-<h1><%=@user.name %>の授業の紹介一覧</h1>
-
-
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    <%= link_to "授業の紹介新規作成", new_user_post_path(@user), class: "btn btn-lg btn-primary pull-right"%>
-    <table class="table table-hover" id="posts-table">
-      <thead>
-        <tr>
-          <th><%=Post.human_attribute_name :title%></th>
-          <th><%=Post.human_attribute_name :created_at %></th>
-          <th></th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <% @posts.each do |post| %>
-         <tr>
-           <td><%=link_to post.title , user_post_path(@user,post) ,id:"post-title" %></td>
-           <td><%=l(post.created_at, format: :long )%></td>
-           <td>
-             <%=link_to "編集",edit_user_post_path(@user,post),class:"btn btn-success" %>
-             <%=link_to "削除",user_post_path(@user,post) ,method: :delete, data:{confirm:"#{post.title}を削除します。よろしですか?"},class:"btn btn-danger" %>
-           </td>
-         </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="main posts-index">
+  <div class="container">
+    <%= search_form_for @search, url:posts_path do |f| %>
+      <%=f.text_field :university_eq %>
+      <%= f.submit %>
+    <% end %>
+    
+    <% @posts.each do |post| %>
+      <div class="posts-index-item">
+        <div class="post-left">
+          <img src="<%= "/user_images/#{post.user.image}" %>">
+        </div>
+        <div class="post-right">
+          <div class="post-user-name">
+            <%= link_to post.user.name, user_path(post.user) %>
+          </div>
+          <%= post.university %>
+          <%= link_to post.title, post_path(post) %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

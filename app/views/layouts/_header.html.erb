@@ -16,11 +16,8 @@
             </a>
             <ul class="dropdown-menu">
               <li class="dropdown-header">ユーザー</li>
-              <li><%=link_to "プロフィール", current_user %></li>
+              <li><%=link_to "プロフィールと自分の投稿", current_user %></li>
               <li><%=link_to "設定", edit_user_path(current_user) %></li>
-              <li class="dropdown-header">投稿</li>
-              <li><%=link_to "自分の投稿を見る", user_posts_path(current_user) %></li>
-              
               <li class="divider"></li>
               <li><%=link_to "ログアウト", logout_path, method: :delete  %></li>
             </ul>

@@ -27,12 +27,12 @@
     <% if logged_in? %>
       <p class="to-students">↓↓大学生の方はこちら↓↓</p>
         <% if current_user.uni? %>
-          <%=link_to "授業の紹介を投稿する", new_user_post_path(current_user), class:"btn btn-primary btn-lg" %>
+          <%=link_to "授業の紹介を投稿する", new_post_path(current_user), class:"btn btn-primary btn-lg" %>
         <% else %>
           <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-primary btn-lg", disabled:true %>
         <% end %>
       <p class="to-students">↓↓高校生の方はこちら↓↓</p>
-          <%=link_to "授業の投稿を見る", all_path, class:"btn btn-primary btn-lg" %>
+          <%=link_to "授業の投稿を見る", posts_path, class:"btn btn-primary btn-lg" %>
         <p>※大学生の方も閲覧できます。</p>
     <% else %>
       <p class="to-students">↓↓大学生の方はこちら↓↓</p>

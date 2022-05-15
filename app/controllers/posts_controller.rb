@@ -1,31 +1,23 @@
 class PostsController < ApplicationController
-  before_action :set_user, only:[:index, :new, :create, :show, :edit, :update, :destroy]
   before_action :set_post, only:[:show, :edit, :update, :destroy]
   before_action :logged_in_user
-  before_action :correct_user, only:[:new, :create, :edit, :update]
-  before_action :admin_or_correct_user, only:[:destory]
+  before_action :admin_or_correct_user, only:[:edit, :destory]
   
   
-  def all
+  def index
     @search=Post.ransack(params[:q])
     @posts=@search.result
   end
   
-  
-  
-  def index
-    @posts=@user.posts
-  end
-  
   def new
-    @post=@user.posts.build
+    @post=Post.new
   end
   
   def create
-    @post=@user.posts.build(post_params)
+    @post=posts.new(post_params)
     if @post.save
       flash[:success]="新規作成に成功しました"
-      redirect_to user_posts_url @user
+      redirect_to posts_url 
     else
       render :new
     end
@@ -33,7 +25,6 @@ class PostsController < ApplicationController
   
   def show
     @likes_count=Like.where(post_id:@post.id).count
-    
   end
   
   def edit
@@ -42,7 +33,7 @@ class PostsController < ApplicationController
   def update
     if @post.update_attributes(post_params)
       flash[:success]="投稿を編集しました"
-      redirect_to user_posts_url @user
+      redirect_to posts_url 
     else
       render :edit
     end
@@ -51,7 +42,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:success]="投稿を削除しました"
-    redirect_to user_posts_path @user
+    redirect_to posts_path 
   end
   
   
@@ -61,13 +52,8 @@ class PostsController < ApplicationController
       params.require(:post).permit(:university, :department, :branch, :title, :description,:user_id)
     end
     
-    def set_user
-      @user=User.find_by(id:params[:user_id])
-    end
     
-    def set_post
-      @post=@user.posts.find_by(id:params[:id])
-    end
+    
     
     
   
@@ -77,5 +63,5 @@ class PostsController < ApplicationController
   
   
  
-  
 end
+

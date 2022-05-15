@@ -43,8 +43,8 @@
      </table>
      <div class="btn-wrapper">
      <% if current_user?(@user) || current_user.admin? %>
-      <%=link_to "編集",edit_user_post_path,class:"btn btn-lg btn-success" %>
-      <%=link_to "削除",user_post_path, method: :delete, data:{confirm:"「#{@post.title}」を削除します。よろしいですか？"},class:"btn btn-lg btn-danger" %>
+      <%=link_to "編集",edit_post_path,class:"btn btn-lg btn-success" %>
+      <%=link_to "削除",post_path, method: :delete, data:{confirm:"「#{@post.title}」を削除します。よろしいですか？"},class:"btn btn-lg btn-danger" %>
      <% end %>
      
      <% if current_user.admin? %>
@@ -61,11 +61,11 @@
      <% end %>
      <% unless current_user.admin? %>
        <% if @post.like?(current_user) %>
-         <%= link_to user_post_like_path(@user, @post), method: :delete do %>
+         <%= link_to post_like_path(@post), method: :delete do %>
            <span class="fa fa-heart liked-btn">︎</span>
          <% end %>
        <% else %>
-         <%=link_to user_post_likes_path(@user, @post), method: :post do %>
+         <%=link_to post_likes_path(@post), method: :post do %>
            <span class="fa fa-heart unliked-btn">️</span>
          <% end %>
        <% end %>
