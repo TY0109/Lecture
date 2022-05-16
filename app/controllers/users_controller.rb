@@ -54,6 +54,12 @@ class UsersController < ApplicationController
     flash[:success]="ユーザーを削除しました。"
     redirect_to users_url
   end
+  
+  
+  def favorites
+    @user=User.find(params[:id])
+    @favorites=Like.where(user_id:@user.id)
+  end
       
   
   private

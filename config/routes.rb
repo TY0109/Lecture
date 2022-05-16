@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   
   
   
-  resources :users
+  resources :users do
+    member do
+      get 'favorites'
+    end
+  end
+    
   
   resources :posts do
     resources :likes, only: [:create, :destroy]
