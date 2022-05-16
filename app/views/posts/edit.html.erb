@@ -24,6 +24,9 @@
       <%= f.file_field :img, id: :post_img %>
       <p><%= f.check_box :remove_img %>画像を削除する</p>
       
+      <!--プレビューが表示されるエリア-->
+      <%= image_tag @post.img.url, id: :img_prev if @post.img? %>
+      
       <%= f.hidden_field:user_id, :value => current_user.id %>
 
       <%= f.submit "更新", class: "btn btn-primary btn-form" %>
@@ -32,3 +35,22 @@
     
   </div>
 </div>
+
+
+<!--選択した写真のプレビューを表示する-->
+<script type="text/javascript">
+$(function() {
+ function readURL(input) {
+   if (input.files && input.files[0]) {
+     var reader = new FileReader();
+     reader.onload = function (e) {
+       $('#img_prev').attr('src', e.target.result);
+     }
+     reader.readAsDataURL(input.files[0]);
+   }
+ }
+ $("#post_img").change(function(){
+   readURL(this);
+ });
+});
+</script>
