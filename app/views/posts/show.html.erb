@@ -39,9 +39,11 @@
      </table>
      
      <!--写真の表示-->
+     <% if @post.img.present? %>
      <div class="img-area" %>
        <%= image_tag @post.img.url %>
      </div>
+     <% end %>
      
      <div class="btn-wrapper">
      <% if @post.user_id==current_user.id || current_user.admin? %>

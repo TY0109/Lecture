@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   private
   
     def post_params
-      params.require(:post).permit(:university, :department, :branch, :title, :description, :img, :user_id)
+      params.require(:post).permit(:university, :department, :branch, :title, :description, :img, :img_cache, :remove_img, :user_id)
     end
     
     

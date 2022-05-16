@@ -24,6 +24,7 @@
       
       <%= f.label :img, class: "label-form" %>
       <%= f.file_field :img, id: :post_img %>
+      <p><%= f.check_box :remove_img %>画像を削除する</p>
       
       <%= f.hidden_field:user_id, :value => current_user.id %>
 
