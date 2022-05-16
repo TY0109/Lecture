@@ -6,10 +6,6 @@
     <table class="table table-bordered" id="post-table">
       <tbody>
        <tr>
-        <th class="active col-md-2">ID</th>
-        <td class="col-md-10"><%=@post.id %></td>
-       </tr>
-       <tr>
          <th class="active col-md-2">大学名</th>
          <td class="col-md-10"><%=@post.university %></td>
        </tr>
@@ -41,12 +37,19 @@
        </tr> 
       </tbody>
      </table>
+     
+     <!--写真の表示-->
+     <div class="img-area" %>
+       <%= image_tag @post.img.url %>
+     </div>
+     
      <div class="btn-wrapper">
      <% if @post.user_id==current_user.id || current_user.admin? %>
       <%=link_to "編集",edit_post_path,class:"btn btn-lg btn-success" %>
       <%=link_to "削除",post_path, method: :delete, data:{confirm:"「#{@post.title}」を削除します。よろしいですか？"},class:"btn btn-lg btn-danger" %>
      <% end %>
      
+     <!--いいね-->
      <% if current_user.admin? %>
        <% if @post.like?(current_user) %>
          <%= link_to '#', disabled:true do %>

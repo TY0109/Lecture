@@ -15,6 +15,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'rails_autolink'
 gem 'ransack'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'sqlite3'

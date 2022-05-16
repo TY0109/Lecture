@@ -10,6 +10,9 @@ class Post < ApplicationRecord
    likes.where(user_id: user.id).exists?
   end
   
+  mount_uploader :img, ImgUploader
+  
+  
   validates :title, presence:true
   validates :description, presence:true
   

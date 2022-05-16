@@ -15,11 +15,12 @@ class PostsController < ApplicationController
     @post=Post.new
   end
   
+  
   def create
-    @post=posts.new(post_params)
+    @post=Post.new(post_params)
     if @post.save
-      flash[:success]="新規作成に成功しました"
-      redirect_to posts_url 
+      flash[:success]="新規投稿に成功しました"
+      redirect_to posts_url
     else
       render :new
     end
@@ -51,7 +52,7 @@ class PostsController < ApplicationController
   private
   
     def post_params
-      params.require(:post).permit(:university, :department, :branch, :title, :description,:user_id)
+      params.require(:post).permit(:university, :department, :branch, :title, :description, :img, :user_id)
     end
     
     
@@ -67,16 +68,7 @@ class PostsController < ApplicationController
         redirect_to posts_url
       end
     end
-      
-    
-    
-    
-  
-  
-    
-    
-  
-  
- 
-end
 
+
+
+end

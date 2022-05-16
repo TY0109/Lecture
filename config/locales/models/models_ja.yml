@@ -19,6 +19,7 @@ ja:
           branch: 学科名
           title: 授業名
           description: 詳細
+          img: 写真
           created_at: 作成日
           updated_at: 更新日
           

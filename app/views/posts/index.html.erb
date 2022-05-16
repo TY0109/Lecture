@@ -7,16 +7,11 @@
     
     <% @posts.each do |post| %>
       <div class="posts-index-item">
-        <div class="post-left">
-          <img src="<%= "/user_images/#{post.user.image}" %>">
+        <div class="post-user-name">
+          <%= link_to post.user.name, user_path(post.user.id) %>
         </div>
-        <div class="post-right">
-          <div class="post-user-name">
-            <%= link_to post.user.name, user_path(post.user) %>
-          </div>
           <%= post.university %>
-          <%= link_to post.title, post_path(post) %>
-        </div>
+          <%= link_to post.title, post_path(post.id) %>
       </div>
     <% end %>
   </div>

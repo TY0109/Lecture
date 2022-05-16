@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220515060951) do
+ActiveRecord::Schema.define(version: 20220516025036) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20220515060951) do
     t.string "university"
     t.string "department"
     t.string "branch"
+    t.string "img"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -44,7 +45,6 @@ ActiveRecord::Schema.define(version: 20220515060951) do
     t.boolean "uni", default: false
     t.boolean "high", default: false
     t.string "remember_digest"
-    t.string "image"
   end
 
 end
