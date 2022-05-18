@@ -72,8 +72,8 @@ class PostsController < ApplicationController
     
     def admin_or_limitation_correct_user
       @post=Post.find(params[:id])
-      unless @post.user_id==current_user.id  || ! current_use.admin?
-        flash[:notice]="自分以外のユーザーの投稿は編集できません"
+      unless @post.user_id==current_user.id  || current_user.admin?
+        flash[:info]="自分以外のユーザーの投稿は編集できません"
         redirect_to posts_url
       end
     end

@@ -3,10 +3,13 @@ class CommentsController < ApplicationController
     @comment= current_user.comments.build(comment_params)
     respond_to do |format|
       if @comment.save
-        format.js { render :index }
+        format.js
+        flash[:success]="メッセージを作成しました"
       else
-        format.html { redirect_to post_path(@comment.post), notice: "投稿できませんでした..."}
+        format.html
+        flash[:danger]="メッセージの作成に失敗しました"
       end
+      redirect_to post_path(@comment.post)
     end
   end
   
