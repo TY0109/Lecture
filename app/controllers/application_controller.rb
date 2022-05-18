@@ -22,5 +22,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_url unless current_user.admin?
   end
   
+  def admin_or_correct_user
+    unless current_user.admin? || current_user?(@user)
+     flash[:danger]="権限がありません"
+     redirect_to root_url
+    end
+  end
   
 end
