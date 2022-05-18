@@ -33,6 +33,10 @@ class PostsController < ApplicationController
   
   def show
     @likes_count=Like.where(post_id:@post.id).count
+    
+    @comments= @post.comments
+    @comment= @post.comments.build
+    @comment_reply= @post.comments.build
   end
   
   def edit

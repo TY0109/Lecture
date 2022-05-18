@@ -80,3 +80,46 @@
     </div>
   </div>
 </div>
+
+<div id="comments_area">
+  <h2>コメント</h2>
+  <% @comments.each do |comment| %>
+    <% if comment.parent_id.present? || comment.id.blank? %>
+      <% next %>
+    <% end %>
+      <hr>
+      <p><%=comment.user.name %>:<%=comment.content %></p>
+      <p>date:<%=comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+  <div id="reply area">
+    <% comment.replies.order(:created_at).each do |reply| %>
+    <p><%=comment.user.name %>:<%=reply.content %></p>
+    <% end %>
+  </div>
+    <%=form_with(model:[@post,@comment_reply]) do |f| %>
+    <div class="row">
+      <div class="form-group col-md-6 col-md-offset-3">
+        <p><label>返信</label></p>
+        <textarea class="form-control input-form" name="comment[content]" rows="2"><%=@comment_reply.content %></textarea>
+      </div>
+    </div>
+      <%= f.hidden_field :post_id, value: @post.id %>
+      <%= f.hidden_field :parent_id, value: comment.id %>
+    <div class="actions">
+      <%=f.submit %>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+  
+  <%=form_with(model:[@post,@comment]) do |f| %>
+    <p><label>新しいスレッド</label></p>
+    <textarea class="form-control input-form" name="comment[content]" rows="5"><%=@comment.content %></textarea>
+    <%=f.hidden_field :post_id, value: @post.id %>
+      <div class="actions">
+        <%=f.submit %>
+      </div>
+  <% end %>
+</div>
+  
+  <%=link_to "編集", edit_post_path(@post) %>
+  <%=link_to '戻る', posts_path %>
