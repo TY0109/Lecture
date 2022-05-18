@@ -9,6 +9,11 @@ class PostsController < ApplicationController
   def index
     @search=Post.ransack(params[:q])
     @posts=@search.result
+    
+    
+    
+    
+    
   end
   
   def new
