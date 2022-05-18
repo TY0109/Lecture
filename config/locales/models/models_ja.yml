@@ -10,6 +10,7 @@ ja:
           email: メールアドレス
           password: パスワード
           password_confirmation: パスワード再入力
+          student: 学生情報
           created_at: 作成日
           updated_at: 更新日
         post:

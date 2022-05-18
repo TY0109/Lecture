@@ -26,7 +26,7 @@
     <div class="center jumbotron" id="top-sub">
     <% if logged_in? %>
       <p class="to-students">↓↓大学生の方はこちら↓↓</p>
-        <% if current_user.uni? %>
+        <% if current_user.student==1 %>
           <%=link_to "授業の紹介を投稿する", new_post_path(current_user), class:"btn btn-primary btn-lg" %>
         <% else %>
           <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-primary btn-lg", disabled:true %>

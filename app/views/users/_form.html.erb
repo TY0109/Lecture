@@ -13,6 +13,8 @@
   <%= f.label :password_confirmation, class: "label-#{yield(:class_text)} label-form" %>
   <%= f.password_field :password_confirmation, class: "form-control" %>
   
+  <%= f.label:student, class:"label-#{yield(:class_text)} label-form" %>
+  <%= f.select:student, {'大学生':1, '高校生':2, '中学生':3, 'その他':4}, {include_blank:"選択してください"}, {class:"form-control", required:true} %>
   
   <%= f.submit yield(:button_text), class:"btn btn-primary btn-block btn-#{yield(:class_text)} btn-form" %>
 <% end %>

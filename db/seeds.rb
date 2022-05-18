@@ -19,19 +19,19 @@ User.create!( name: "大学生1",
               email: "uniA@email.com",
               password: "password",
               password_confirmation: "password",
-              uni:true)
+              student:1)
 
 User.create!( name: "大学生2",
               email: "uniB@email.com",
               password: "password",
               password_confirmation: "password",
-              uni:true)
+              student:1)
 
 User.create!( name: "高校生1",
               email: "highA@email.com",
               password: "password",
               password_confirmation: "password",
-              high:true)
+              student:2)
 
 
 

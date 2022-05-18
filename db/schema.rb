@@ -42,8 +42,7 @@ ActiveRecord::Schema.define(version: 20220516025036) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
-    t.boolean "uni", default: false
-    t.boolean "high", default: false
+    t.integer "student"
     t.string "remember_digest"
   end
 
