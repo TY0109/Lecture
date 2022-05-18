@@ -1,20 +1,49 @@
 <% provide(:title, "@user.name") %>
-<div class="main user-show">
-  <div class="container">
-    <div class="user">
-      <h2><%= @user.name %></h2>
-      <p><%= @user.email %></p>
-      <% if current_user.id==@user.id %>
-        <%= link_to "編集", edit_user_path(@user) %>
-      <% end %>
+
+<div class="p-5">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#tab_a" class="nav-link" data-toggle="tab">マイページ</a>
+    </li>
+    <li class="nav-item">
+      <a href="#tab_b" class="nav-link" data-toggle="tab">いいね!</a>
+    </li>
+  </ul>
+</div>
+    
+<div class="tab-content">
+  <div id="tab_a" class="tab-pane active">
+    <div class="main user-show">
+      <div class="container">
+        <div class="user">
+          <h2><%= @user.name %></h2>
+          <p><%= @user.email %></p>
+          <% if current_user.id==@user.id %>
+            <%= link_to "編集", edit_user_path(@user) %>
+          <% end %>
+        </div>
+      </div>
     </div>
-    
-    <ul class="user-tabs">
-      <li class="active"><%= link_to "マイページ", user_path(@user) %></li>
-      <li><%= link_to "いいね!", favorites_user_path(@user) %></li>
-    </ul>
-    
-    <% @user.posts.each do |post| %>
+    <div class="main my-like">
+      <div class="container">
+        <% @user.posts.each do |post| %>
+          <div class="posts-index-item">
+            <div class="post-user-name">
+              <%= link_to post.user.name, user_path(post.user.id) %>
+             </div>
+              <%= link_to post.title, post_path(post.id) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div id="tab_b" class="tab-pane active">
+    <div class="main my-like">
+    <!-- 変数@favoritesに対してeach文を用いてください -->
+    <% @favorites.each do |favorite| %>
+      <!-- 変数postを定義してください -->
+      <% post=Post.find_by(id:favorite.post_id) %>
+ 
       <div class="posts-index-item">
           <div class="post-user-name">
             <%= link_to post.user.name, user_path(post.user.id) %>
