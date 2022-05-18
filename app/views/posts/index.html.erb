@@ -4,11 +4,21 @@
   <div class="col-md-11 col-md-offset-0.5">
     <div class="main posts-index">
       <div class="container">
-        <div class="search-form">
-          <%= search_form_for @search, url:posts_path do |f| %>
-            <%=f.text_field :university_eq %>
-            <%= f.submit %>
-           <% end %>
+        <div class="search">
+          <p>大学名で検索(※大学の文字まで入力）</p>
+          <div class="search-form">
+            <%= search_form_for @search, url:posts_path do |f| %>
+              <%=f.text_field :university_eq %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+          <p>学部名で検索（※学部の文字まで入力）</p>
+          <div class="search-form">
+            <%= search_form_for @search, url:posts_path do |f| %>
+              <%=f.text_field :department_eq %>
+              <%= f.submit %>
+            <% end %>
+          </div>
         </div>
         <% @posts.each do |post| %>
           <div class="posts-index-item">
