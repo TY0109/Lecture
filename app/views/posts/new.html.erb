@@ -1,6 +1,6 @@
 <% provide(:title,"New Post") %>
 
-<h1>投稿を新規作成</h1>
+<h1 class="post-make-title">投稿を新規作成</h1>
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     
@@ -8,16 +8,16 @@
       <%= render  'shared/error_messages',object:f.object%>
      
       <%= f.label:university , class: "label-form" %>
-      <%= f.text_field:university, class: "form-control" %>
+      <%= f.text_field:university, class: "form-control form-short" %>
       
       <%= f.label:department, class: "label-form" %>
-      <%= f.text_field:department, class: "form-control" %>
+      <%= f.text_field:department, class: "form-control form-short" %>
       
       <%= f.label:branch, class:"label-form" %>
-      <%= f.text_field:branch, class:"form-control" %>
+      <%= f.text_field:branch, class:"form-control form-short" %>
       
       <%= f.label:title , class: "label-form" %>
-      <%= f.text_field :title, class: "form-control" %>
+      <%= f.text_field :title, class: "form-control form-short" %>
       
       <%= f.label :description, class: "label-form" %>
       <%= f.text_area :description, rows:10, class: "form-control" %>

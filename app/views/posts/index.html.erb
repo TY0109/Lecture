@@ -1,7 +1,7 @@
 <% provide(:title, "投稿一覧") %>
 
 <div class="row">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-11 col-md-offset-0.5">
     <div class="main posts-index">
       <div class="container">
         <div class="search-form">
@@ -15,9 +15,10 @@
             <div class="post-user-name">
               <%= link_to post.user.name, user_path(post.user.id) %>
             </div>
-            
             <div class="post-lecture-info">
               <%= post.university %>
+              <%= post.department %>
+              <%= post.branch %><br>
               <%= link_to post.title, post_path(post.id) %><br>
               <%= post.description %>
               <!--写真の表示-->
