@@ -93,7 +93,7 @@
       <p>質問作成日時:<%=comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
   <div id="reply area">
     <% comment.replies.order(:created_at).each do |reply| %>
-    <p><%=comment.user.name %>:<%=reply.content %></p>
+    <p><%=reply.user.name %>:<%=reply.content %></p>
     <% end %>
   </div>
     <%=form_with(model:[@post,@comment_reply]) do |f| %>
