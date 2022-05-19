@@ -5,16 +5,13 @@
     <div class="main posts-index">
       <div class="container">
         <div class="search">
-          <p>大学名で検索(※大学の文字まで入力）</p>
+          <p>大学名、学部名のみでも検索できます</p>
           <div class="search-form">
             <%= search_form_for @search, url:posts_path do |f| %>
-              <%=f.text_field :university_eq %>
-              <%= f.submit %>
-            <% end %>
-          </div>
-          <p>学部名で検索（※学部の文字まで入力）</p>
-          <div class="search-form">
-            <%= search_form_for @search, url:posts_path do |f| %>
+              <%=f.label:university %>
+              <%=f.text_field :university_eq %><br>
+              
+              <%=f.label:department %>
               <%=f.text_field :department_eq %>
               <%= f.submit %>
             <% end %>
