@@ -19,6 +19,7 @@
 }
 
 
+//投稿一覧//
 .search-form{
   margin-top:-10px;
   margin-bottom:20px;
@@ -41,6 +42,23 @@
    
 }
 
+
 .form-short{
   width:30%;
+}
+
+
+//投稿詳細//
+.btn-wrapper{
+  float:right;
+}
+
+
+.comment-area{
+  text-align:left;
+}
+
+.new-sread{
+  border-top: dashed black;
+  margin-top:20px;
 }
