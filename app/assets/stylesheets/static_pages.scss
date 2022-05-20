@@ -1,32 +1,56 @@
+.top-wrapper{
+  color:white;
+  background-image: url("/60f14d1f68c1d9213f47d1b14f67753f_t.jpeg");
+}
+
+
 #top-main-title{
   font-weight:bold;
   font-style:italic;
 }
 
 
-
-
-#btn-top-admin{
-  font-size:14px;
-  line-height:20px;
-  padding-bottom:6px;
-  padding-left:12px;
-  padding-right:12px;
-  padding-top:6px;
-}
-
-
-#btn-top-general{
-  font-size:14px;
-  line-height:20px;
-  padding-bottom:6px;
-  padding-left:12px;
-  padding-right:12px;
-  padding-top:6px;
-}
-
-
-
 .to-students{
   padding-top:30px
 }
+
+
+.btn{
+  color:white;
+  opacity: 0.8;
+}
+
+.btn:hover{
+  color:white;
+  opacity: 1.0;
+}
+
+.btn-post-index{
+  background-color: #55acee;
+  
+}
+
+.btn-new-user{
+  background-color:#77F9C3;
+}
+
+.btn-guest-admin{
+  background-color:#FFABCE;
+  font-size:14px;
+  line-height:20px;
+  padding-bottom:6px;
+  padding-left:12px;
+  padding-right:12px;
+  padding-top:6px;
+}
+
+.btn-guest{
+  background-color:#FFAD90;
+  font-size:14px;
+  line-height:20px;
+  padding-bottom:6px;
+  padding-left:12px;
+  padding-right:12px;
+  padding-top:6px;
+}
+

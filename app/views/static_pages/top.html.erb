@@ -1,47 +1,49 @@
 <% provide(:title, "Top") %>
 
+<div class="top-wrapper">
 <div class="row">
   <div class="col-md-7" >
-   <div class="center jumbotron" id="top-main">
+   <div class="center">
     <h1 id="top-main-title">unipass</h1>
     <p>unipassは、大学生が大学の授業やゼミなどを<br>
     紹介してくれるアプリです。</p>
     <p>↓↓初めてのご利用↓↓</p>
     <% if logged_in? %>
       <% if current_user.admin? %>
-        <%= link_to "アカウント作成", signup_path, class: "btn btn-lg btn-success" %>
+        <%= link_to "アカウント作成", signup_path, class: "btn btn-new-user btn-lg" %>
       <% else  %>
-        <%= link_to "アカウント作成", '#', class: "btn btn-lg btn-success" , disabled:true %>
+        <%= link_to "アカウント作成", '#', class: "btn btn-new-user btn-lg" , disabled:true %>
       <% end %>
     <% else %>
-      <%=link_to "アカウント作成", signup_path, class:"btn btn-lg btn-success" %>
+      <%=link_to "アカウント作成", signup_path, class:"btn btn-new-user btn-lg" %>
       <div style="margin-top:10px">
-        <%=link_to "ゲストログイン（管理権限）", guest_admin_login_path, method: :post, class:"btn btn-lg btn-danger" , id:"btn-top-admin" %>
-        <%=link_to "ゲストログイン（一般権限）", guest_login_path, method: :post,  class:"btn btn-lg btn-warning" , id:"btn-top-general" %>
+        <%=link_to "ゲストログイン（管理権限）", guest_admin_login_path, method: :post, class:"btn btn-guest-admin btn-lg" %>
+        <%=link_to "ゲストログイン（一般権限）", guest_login_path, method: :post,  class:"btn btn-guest btn-lg" %>
       </div>
     <% end %>
    </div>
   </div>
   <div class="col-md-5" >
-    <div class="center jumbotron" id="top-sub">
+    <div class="center">
     <% if logged_in? %>
       <p class="to-students">↓↓大学生の方はこちら↓↓</p>
         <% if current_user.student==1 %>
-          <%=link_to "授業の紹介を投稿する", new_post_path(current_user), class:"btn btn-primary btn-lg" %>
+          <%=link_to "授業の紹介を投稿する", new_post_path(current_user), class:"btn btn-lg btn-post-index" %>
         <% else %>
-          <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-primary btn-lg", disabled:true %>
+          <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-lg btn-post-index", disabled:true %>
         <% end %>
       <p class="to-students">↓↓高校生の方はこちら↓↓</p>
-          <%=link_to "授業の投稿を見る", posts_path, class:"btn btn-primary btn-lg" %>
+        <%=link_to "授業の投稿を見る", posts_path, class:"btn btn-lg btn-post-index" %>
         <p>※大学生の方も閲覧できます。</p>
     <% else %>
       <p class="to-students">↓↓大学生の方はこちら↓↓</p>
-        <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-primary btn-lg", disabled:true %>
+        <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-lg btn-post-index", disabled:true %>
       <p class="to-students">↓↓高校生の方はこちら↓↓</p>
-        <%=link_to "授業の投稿を見る", '#', class:"btn btn-primary btn-lg", disabled:true %>
+        <%=link_to "授業の投稿を見る", '#', class:"btn btn-lg btn-post-index", disabled:true %>
       <p>※大学生の方も閲覧可能です。</p>
     <% end %>
     </div>
   </div>
+</div>
 </div>
 
