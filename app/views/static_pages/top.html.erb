@@ -29,18 +29,18 @@
     <% if logged_in? %>
       <p class="to-students">↓↓大学生の方はこちら↓↓</p>
         <% if current_user.student==1 %>
-          <%=link_to "授業の紹介を投稿する", new_post_path(current_user), class:"btn btn-lg btn-post-index" %>
+          <%=link_to "授業の紹介を投稿する", new_post_path(current_user), class:"btn btn-lg btn-post" %>
         <% else %>
-          <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-lg btn-post-index", disabled:true %>
+          <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-lg btn-post", disabled:true %>
         <% end %>
       <p class="to-students">↓↓高校生の方はこちら↓↓</p>
-        <%=link_to "授業の投稿を見る", posts_path, class:"btn btn-lg btn-post-index" %>
+        <%=link_to "授業の投稿を見る", posts_path, class:"btn btn-lg btn-post" %>
         <p>※大学生の方も閲覧できます。</p>
     <% else %>
       <p class="to-students">↓↓大学生の方はこちら↓↓</p>
-        <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-lg btn-post-index", disabled:true %>
+        <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-lg btn-post", disabled:true %>
       <p class="to-students">↓↓高校生の方はこちら↓↓</p>
-        <%=link_to "授業の投稿を見る", '#', class:"btn btn-lg btn-post-index", disabled:true %>
+        <%=link_to "授業の投稿を見る", '#', class:"btn btn-lg btn-post", disabled:true %>
       <p>※大学生の方も閲覧可能です。</p>
     <% end %>
     </div>

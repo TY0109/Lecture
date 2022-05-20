@@ -4,7 +4,7 @@
 /*共通*/
 
 body{
-  padding-top: 60px;
+  padding-top:60px;
   font-family: "Hiragino Kaku Gothic ProN";
 }
 
@@ -33,6 +33,14 @@ textarea{
 
 .btn-form{
   margin-top:10px;
+  box-shadow: 0px 7px #0099FF;
+  background-color:#55acee;
+}
+
+.btn-form:active{
+  position: relative;
+  top: 7px;
+  box-shadow: none;
 }
 
 
@@ -132,4 +140,11 @@ p {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+
+// フラッシュメッセージのところのcontainer//
+.container{
+  
+
 }
