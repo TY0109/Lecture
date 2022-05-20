@@ -22,11 +22,9 @@ textarea{
 }
  
 
-
 .center h1 {
   margin-bottom: 10px;
 }
-
 
 
 .label-form{
@@ -57,7 +55,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  color: black;
 }
 
 p {
@@ -67,9 +65,8 @@ p {
 
 
 /*ヘッダー*/
-
 #header{
-  background-color:#63b3ed;
+  background-color: rgba(34, 49, 52, 0.9);
 }
 
 #logo{
@@ -92,16 +89,14 @@ p {
 .header-list{
   color:#fff !important;
   font-weight:bold;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition:all 0.5s;
 }
 
 .header-list:hover{
-  color:#BBB !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
 }
 
-
-#dropdown-title{
-  background-color:#63b3ed;
-}
 
 .dropdown-header{
   background-color:rgba(200,200,200,0.5);
