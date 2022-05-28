@@ -19,10 +19,20 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, length: { minimum: 6}, allow_nil: true
 
 
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+  def self.guest
+    user=User.find_or_create_by(email:'guest@email.com') do |user|
+      user.password=SecureRandom.urlsafe_base64
+      user.name="ゲストユーザー"
+    end
   end
-
+  
+  def self.guest_admin
+    user=User.find_or_create_by(email:'guest_admin@email.com') do |user|
+      user.password=SecureRandom.urlsafe_base64
+      user.name="ゲスト管理人"
+    end
+  end
+  
   
   
 

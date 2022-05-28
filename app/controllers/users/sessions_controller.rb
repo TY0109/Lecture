@@ -24,6 +24,22 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  def create_guest
+    user = User.guest
+    sign_in user   # ユーザーをログインさせる
+    flash[:success]='ゲストユーザーとしてログインしました。'
+    redirect_to root_url
+  end
+  
+  def create_guest_admin
+    user = User.guest_admin
+    sign_in user   # ユーザーをログインさせる
+    flash[:success]='ゲスト管理人としてログインしました。'
+    redirect_to root_url
+  end
+  
+  
+  
   protected
 
   def after_sign_in_path_for(resource_or_scope)

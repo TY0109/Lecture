@@ -11,10 +11,12 @@ Rails.application.routes.draw do
     get "signup", :to => "users/registrations#new"
     get "login", :to => "users/sessions#new"
     get "logout", :to => "users/sessions#destroy"
+    
+    #ゲストログインを新たに追加
+    post 'guest_login', to: 'users/sessions#create_guest'
+    post 'guest_admin_login', to: 'users/sessions#create_guest_admin'
+
   end
-  
-  post 'guest_login', to: "guest_sessions#create"
-  post 'guest_admin_login', to: "guest_admin_sessions#create"
   
   
   resources :users, only: [:index, :show] do
