@@ -5,7 +5,7 @@
   <div class="col-md-8 col-md-offset-2">
     
     <%= form_with(model:@post, url:posts_path ,local: true) do |f| %>
-      <%= render  'shared/error_messages',object:f.object%>
+      <%= render  'shared/error_messages',resource:@post %>
      
       <%= f.label:university , class: "label-form" %>
       <%= f.text_field:university, class: "form-control form-short" %>

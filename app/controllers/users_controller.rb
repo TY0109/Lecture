@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   include GuestSessionsHelper
   
-  before_action :set_user ,only:[:show, :edit, :update,:destroy]
-  before_action :logged_in_user ,only:[:index,:show,:edit,:update,:destroy]
-  before_action :admin_or_correct_user ,only:[:edit,:update]
-  before_action :admin_user ,only: [:index,:destroy]
+  before_action :set_user ,only:[:show]
+  before_action :authenticate_user! ,only:[:index,:show]
+  before_action :admin_or_correct_user, only:[:show]
+  before_action :admin_user ,only: [:index]
  
   def index
     @users=User.paginate(page:params[:page],per_page:20)
@@ -14,41 +14,6 @@ class UsersController < ApplicationController
     @favorites=Like.where(user_id:@user.id)
   end
 
-  def new
-   if logged_in? && !current_user.admin?
-    flash[:info]="すでにログインしています。"
-    redirect_to current_user
-   end
-   @user=User.new
-  end
-    
-  
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      log_in @user
-      flash[:success] = '新規作成に成功しました。'
-      redirect_to @user
-    else
-      render :new
-    end
-  end
-  
-  def edit
-    if guest_user?(@user)
-      flash[:danger]="このユーザーは編集できません"
-      redirect_to user_url
-    end
-  end
-  
-  def update
-    if @user.update_attributes(user_params)
-      flash[:success]="ユーザー情報を編集しました。"
-      redirect_to @user
-    else
-      render :edit
-    end
-  end
   
   def destroy
     @user.destroy
@@ -58,13 +23,12 @@ class UsersController < ApplicationController
       
   private
   
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
-    
-    def set_user
-      @user=User.find(params[:id])
-    end
+  def set_user
+    @user=User.find(params[:id])
+  end
   
-    
+
+
+  
+  
 end

@@ -8,7 +8,7 @@
     <p>unipassは、大学生が大学の授業やゼミなどを<br>
     紹介してくれるアプリです。</p>
     <p>↓↓初めてのご利用↓↓</p>
-    <% if logged_in? %>
+    <% if user_signed_in? %>
       <% if current_user.admin? %>
         <%= link_to "アカウント作成", signup_path, class: "btn btn-new-user btn-lg" %>
       <% else  %>
@@ -25,7 +25,7 @@
   </div>
   <div class="col-md-6" >
     <div class="center">
-    <% if logged_in? %>
+    <% if user_signed_in? %>
       <p class="to-students">↓↓大学生の方はこちら↓↓</p>
         <% if current_user.student==1 %>
           <%=link_to "授業の紹介を投稿する", new_post_path(current_user), class:"btn btn-lg btn-post" %>

@@ -33,16 +33,7 @@ textarea{
 
 .btn-form{
   margin-top:10px;
-  box-shadow: 0px 7px #0099FF;
-  background-color:#55acee;
 }
-
-.btn-form:active{
-  position: relative;
-  top: 7px;
-  box-shadow: none;
-}
-
 
 /* タイポグラフィ */
 
@@ -143,8 +134,13 @@ p {
 }
 
 
-// フラッシュメッセージのところのcontainer//
-.container{
-  
+//deviseログイン、新規登録、編集のフラッシュメッセージ//
+.alert-notice{
+  color:#31708f;
+  background-color:#d9edf7;
+}
 
+.alert-alert{
+  color:#a94442;
+  background-color:#f2dede;
 }
