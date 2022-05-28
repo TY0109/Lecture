@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-
+  #更新時に現在のパスワード不要
   before_action :configure_account_update_params, only: [:update]
-
+  
+  #管理権限保持者と、ゲストユーザーはプロフィールの編集不可
+  before_action :limitation_user, only:[:edit]
+  
   protected
   # 追加(必須)
   def update_resource(resource, params)
@@ -28,6 +31,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
    current_user
   end
   
+  def limitation_user
+   if current_user.admin? || current_user.name=="ゲストユーザー"
+     flash[:danger]="このユーザーは編集できません。"
+     redirect_to root_url
+   end
+  end
   
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -42,10 +51,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+   #GET /resource/edit
+   def edit
+    
+    super
+    
+   end
 
   # PUT /resource
   # def update

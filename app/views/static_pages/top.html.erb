@@ -9,11 +9,7 @@
     紹介してくれるアプリです。</p>
     <p>↓↓初めてのご利用↓↓</p>
     <% if user_signed_in? %>
-      <% if current_user.admin? %>
-        <%= link_to "アカウント作成", signup_path, class: "btn btn-new-user btn-lg" %>
-      <% else  %>
-        <%= link_to "アカウント作成", '#', class: "btn btn-new-user btn-lg" , disabled:true %>
-      <% end %>
+      <%= link_to "アカウント作成", '#', class: "btn btn-new-user btn-lg" , disabled:true %>
     <% else %>
       <%=link_to "アカウント作成", signup_path, class:"btn btn-new-user btn-lg" %>
       <div style="margin-top:10px">
