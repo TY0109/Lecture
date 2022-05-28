@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   include GuestSessionsHelper
   
-  before_action :set_user ,only:[:show]
-  before_action :authenticate_user! ,only:[:index,:show]
+  before_action :set_user ,only:[:show, :destroy]
+  before_action :authenticate_user! ,only:[:index,:show, :destroy]
   before_action :admin_or_correct_user, only:[:show]
-  before_action :admin_user ,only: [:index]
+  before_action :admin_user ,only: [:index, :destroy]
  
   def index
     @users=User.paginate(page:params[:page],per_page:20)
