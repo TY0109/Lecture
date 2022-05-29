@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
+
   before_action :store_user_location!, if: :storable_location?
 
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -32,11 +33,11 @@ class ApplicationController < ActionController::Base
   
   
   protected
-  #新規登録時のストロングパラメータに「nameカラム」の追加
+
   def configure_permitted_parameters
-    #新規登録時のストロングパラメータに「nicknameカラムとageカラム」の追加
+    #新規登録時のストロングパラメータに「nameカラム」の追加
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    
+    #更新時のストロングパラメータに「nameカラム」の追加
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
   

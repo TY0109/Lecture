@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails',        '~> 5.1.6'
 gem 'bcrypt'
-gem 'rails-i18n'
+gem 'devise-i18n'
 gem 'puma',         '~> 3.7'
 gem 'sass-rails',   '~> 5.0'
 gem 'uglifier',     '>= 1.3.0'
@@ -18,6 +18,10 @@ gem 'rails_autolink'
 gem 'ransack'
 gem 'carrierwave'
 gem 'devise'
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
+gem 'dotenv-rails'
+
 
 group :development, :test do
   gem 'sqlite3'

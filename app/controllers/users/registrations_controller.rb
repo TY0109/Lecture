@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  #更新時に現在のパスワード不要
-  before_action :configure_account_update_params, only: [:update]
-  
   #管理権限保持者と、ゲストユーザーはプロフィールの編集不可
   before_action :limitation_user, only:[:edit]
   
+  #更新時に、現在のパスワードを不要にする
   protected
   # 追加(必須)
   def update_resource(resource, params)
@@ -16,10 +14,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # 必須ではないがupdate後にtop画面にリダイレクトするメソッド
   def after_update_path_for(_resource)
     root_path
-  end
-
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
 
