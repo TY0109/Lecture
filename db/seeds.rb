@@ -39,8 +39,8 @@ User.create!( name: "高校生1",
 Post.create!(university: "A大学",
              department: "経済学部",
              branch: "経済学科",
-             title: "マクロ経済A",
-             description: "財政政策や金融政策の効果について学びます。金融緩和を行うと、金利が下がると言われています。しかし、ゼロ金利とも言われている現代においては効果は薄いです、金利が下がると、自国通貨の価値は下がります。そのため、海外の通貨の預金が集中し円安になる可能性があります。",
+             title: "Aゼミ",
+             description: "私たちのゼミでは、それぞれの学生が、テーマを決めて研究活動に取り組んでいます。これはゼミ旅行で撮った１枚です。",
              user_id:4)
 
 Post.create!(university: "A大学",
@@ -67,17 +67,6 @@ Post.create!(university: "B大学",
              user_id:5)            
              
              
-             
-             
-10.times do |n|
-  name=Faker::Name.name
-  email="sample-#{n+1}@email.com"
-  password="password"
-  User.create!(name: name,
-               email: email,
-               password: password,
-               password_confirmation: password )
-end
 
 
 puts "Users Created"
