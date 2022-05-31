@@ -72,7 +72,7 @@
      <% end %>
      
      <div class="btn-wrapper">
-     <% if @post.user_id==current_user.id || current_user.admin? %>
+     <% if @post.user_id==current_user.id  %>
       <%=link_to "編集",edit_post_path,class:"btn btn-lg btn-success" %>
       <%=link_to "削除",post_path, method: :delete, data:{confirm:"「#{@post.title}」を削除します。よろしいですか？"},class:"btn btn-lg btn-danger" %>
      <% end %>
