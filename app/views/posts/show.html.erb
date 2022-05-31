@@ -46,7 +46,7 @@
      <% end %>
      
      <!--いいね-->
-     <% if current_user.admin? %>
+     <% if current_user.admin? || current_user.email=="guest@email.com" %>
        <% if @post.like?(current_user) %>
          <%= link_to '#', disabled:true do %>
            <span class="fa fa-heart liked-btn">︎</span>
@@ -58,7 +58,7 @@
        <% end %>
        <%=@likes_count %>
      <% end %>
-     <% unless current_user.admin? %>
+     <% unless current_user.admin? || current_user.email=="guest@email.com" %>
        <% if @post.like?(current_user) %>
          <%= link_to post_like_path(@post), method: :delete do %>
            <span class="fa fa-heart liked-btn">︎</span>
@@ -100,7 +100,12 @@
     <div class="row">
       <div class="form-group col-md-3">
         <p><label>返信</label></p>
-        <textarea class="form-control input-form" name="comment[content]" rows="2"><%=@comment_reply.content %></textarea>
+        <% if current_user.admin? || current_user.email=="guest@email.com" %>
+          <textarea class="form-control input-form" name="comment[content]" rows="2" disabled="disabled"><%=@comment_reply.content %></textarea>
+        <% end %>
+        <% unless current_user.admin? || current_user.email=="guest@email.com" %>
+          <textarea class="form-control input-form" name="comment[content]" rows="2"><%=@comment_reply.content %></textarea>
+        <% end %>
       </div>
     </div>
       <%= f.hidden_field :post_id, value: @post.id %>
@@ -115,10 +120,15 @@
   <div class="row">
    <div class="form-group col-md-3">
     <p><label class="new-sread">新しいスレッド</label></p>
-    <textarea class="form-control input-form" name="comment[content]" rows="5"><%=@comment.content %></textarea>
+    <% if current_user.admin? || current_user.email=="guest@email.com" %>
+      <textarea class="form-control input-form" name="comment[content]" rows="5" disabled="disabled"><%=@comment.content %></textarea>
+    <% end %>
+    <% unless current_user.admin? || current_user.email=="guest@email.com" %>
+      <textarea class="form-control input-form" name="comment[content]" rows="5"><%=@comment.content %></textarea>
+    <% end %>
     <%=f.hidden_field :post_id, value: @post.id %>
     
-    <%=f.submit %>
+    <%=f.submit%>
    </div>
   </div>
   <% end %>

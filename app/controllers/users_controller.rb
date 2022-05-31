@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   
   before_action :set_user ,only:[:show, :destroy]
   before_action :authenticate_user! ,only:[:index,:show, :destroy]
-  before_action :admin_or_correct_user, only:[:show]
   before_action :admin_user ,only: [:index, :destroy]
  
   def index

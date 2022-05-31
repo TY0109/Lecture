@@ -11,7 +11,8 @@ class Post < ApplicationRecord
   
   mount_uploader :img, ImgUploader
   
-  
+  validates :university, presence:true
+  validates :department, presence:true
   validates :title, presence:true
   validates :description, presence:true
   

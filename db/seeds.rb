@@ -19,29 +19,19 @@ User.create!( name: "大学生1",
               email: "uniA@email.com",
               password: "password",
               password_confirmation: "password",
-              student:1)
+              student:0)
 
 User.create!( name: "大学生2",
               email: "uniB@email.com",
               password: "password",
               password_confirmation: "password",
-              student:1)
+              student:0)
 
 User.create!( name: "高校生1",
               email: "highA@email.com",
               password: "password",
               password_confirmation: "password",
-              student:2)
-
-
-
-
-Post.create!(university: "A大学",
-             department: "経済学部",
-             branch: "経済学科",
-             title: "Aゼミ",
-             description: "私たちのゼミでは、それぞれの学生が、テーマを決めて研究活動に取り組んでいます。これはゼミ旅行で撮った１枚です。",
-             user_id:4)
+              student:1)
 
 Post.create!(university: "A大学",
              department: "経済学部",

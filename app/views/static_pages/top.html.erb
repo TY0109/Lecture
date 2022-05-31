@@ -24,7 +24,7 @@
     <div class="center">
     <% if user_signed_in? %>
       <p class="to-students">↓↓大学生の方はこちら↓↓</p>
-        <% if current_user.student==1 %>
+        <% if current_user.student==0 %>
           <%=link_to "授業の紹介を投稿する", new_post_path(current_user), class:"btn btn-lg btn-post" %>
         <% else %>
           <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-lg btn-post", disabled:true %>
