@@ -24,8 +24,7 @@ gem 'dotenv-rails'
 
 
 group :development, :test do
-  gem "sqlite3", "~> 1.3"
-require "sqlite3"
+  gem 'sqlite3', '~> 1.3', '< 1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -37,7 +36,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '0.20.0'
+  gem 'pg', '1.1'
 end
 
 
