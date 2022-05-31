@@ -23,6 +23,8 @@ gem 'omniauth-rails_csrf_protection'
 gem 'dotenv-rails'
 
 
+
+
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
