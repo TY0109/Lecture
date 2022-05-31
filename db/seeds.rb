@@ -2,18 +2,21 @@ User.create!( name: "管理人",
               email: "sample@email.com",
               password: "password",
               password_confirmation: "password",
-              admin:true)
+              admin:true,
+              student:1)
 
 User.create!( name: "ゲスト管理人",
               email: "guest_admin@email.com",
               password: "password",
               password_confirmation: "password",
-              admin:true)
+              admin:true,
+              student:1)
 
 User.create!( name: "ゲストユーザー",
               email: "guest@email.com",
               password: "password",
-              password_confirmation: "password")
+              password_confirmation: "password",
+              student:1)
 
 User.create!( name: "大学生1",
               email: "uniA@email.com",
