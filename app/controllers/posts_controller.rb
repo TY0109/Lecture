@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   end
   
   def update
-    if @post.update_attributes(post_params)
+    if @post.update(post_params)
       flash[:success]="投稿を編集しました"
       redirect_to posts_url 
     else
