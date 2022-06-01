@@ -16,11 +16,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :student, class:"form-label"%><br />
-    <%= f.select :student, {'大学生':0, '高校生':1}, {include_blank:"学生区分を選択してください"}, {class:"form-control"} %>
-  </div>
-
-  <div class="field">
     <%= f.label :password, class:"form-label" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 文字以上で入力してください。)</em>
