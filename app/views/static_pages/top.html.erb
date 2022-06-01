@@ -24,7 +24,11 @@
     <div class="center">
     <% if user_signed_in? %>
       <p class="to-students">↓↓大学生の方はこちら↓↓</p>
+      <% if current_user.admin? || current_user.email=="guest@email.com" %>
+        <%=link_to "授業の紹介を投稿する", '#', class:"btn btn-lg btn-post", disabled:true %>
+      <% else %>
         <%=link_to "授業の紹介を投稿する", new_post_path(current_user), class:"btn btn-lg btn-post" %>
+      <% end %>
       <p class="to-students">↓↓高校生の方はこちら↓↓</p>
         <%=link_to "授業の投稿を見る", posts_path, class:"btn btn-lg btn-post" %>
     <% else %>
