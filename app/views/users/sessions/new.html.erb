@@ -29,7 +29,9 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />
+    <a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1657162701&redirect_uri=https://thawing-taiga-57099.herokuapp.com/users/auth/line/callback&state=02dc5388fcc0caaba6b789037efe2943330612d8408b8080
+             &scope=profile%20openid%20email">LINEでログイン
+    </a>
   <% end %>
 <% end %>
 
