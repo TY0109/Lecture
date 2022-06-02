@@ -13,6 +13,10 @@ module OmniAuth
           email:    JWT.decode(access_token.params['id_token'], ENV['LINE_SECRET']).first['email'] #追記
         }
       end
+
+      def callback_url
+        full_host + script_name + callback_path
+      end
     end
   end
 end
