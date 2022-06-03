@@ -26,9 +26,12 @@
 <% end %>
 
 <p>ユーザー登録は<span><%=link_to"こちら", signup_path %></span></p>
-<a href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1657162701&redirect_uri=https://vast-caverns-42052.herokuapp.com/users/auth/line/callback&state=39hg8jgj94k9fk904kf90k349kf9
-        &scope=profile%20openid%20email">LINEでログインはこちら
-</a>
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+  <% end %>
+<% end %>
+
 
 
 </li>
