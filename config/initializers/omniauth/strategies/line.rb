@@ -35,8 +35,7 @@ module OmniAuth
       # nonceをリクエストパラメータに追加するためoverride
       def authorize_params
         super.tap do |params|
-          params[:state] = SecureRandom.uuid
-          cookies["omniauth.state"] = params[:state]
+          
           
           params[:client_id] = 1657162701
           session["omniauth.client_id"] = params[:client_id]
