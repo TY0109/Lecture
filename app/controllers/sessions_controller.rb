@@ -1,3 +1,3 @@
 class SessionsController < ApplicationController
-    # 消した
+    # 消したOK
 end

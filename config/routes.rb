@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   :omniauth_callbacks => "omniauth_callbacks"
   } 
 
-  # 消した
+  # 消したOK
   
   devise_scope :user do
     #わかりやすく再定義（併存可能）
