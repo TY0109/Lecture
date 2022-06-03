@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   :sessions => 'users/sessions',
   :omniauth_callbacks => "omniauth_callbacks"
   } 
+
+  get '/auth/line/callback', to: 'sessions#create'
   
   devise_scope :user do
     #わかりやすく再定義（併存可能）
