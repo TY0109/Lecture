@@ -51,7 +51,7 @@ module OmniAuth
             body: {
               id_token:  access_token['id_token'],
               client_id: options.client_id,
-              nonce:     session.delete("omniauth.nonce")
+              state:     session.delete("omniauth.state")
             }
           }
         ).parsed

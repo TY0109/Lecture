@@ -26,7 +26,8 @@
 <% end %>
 
 <p>ユーザー登録は<span><%=link_to"こちら", signup_path %></span></p>
-<%=link_to "LINEログイン", callback_url %>
+<%= link_to "LINE Login", user_line_omniauth_authorize_path %>
+
 
 
 
