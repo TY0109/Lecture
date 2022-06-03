@@ -11,10 +11,10 @@ module OmniAuth
       option :client_options, {
         site:          'https://api.line.me',
         authorize_url: 'https://access.line.me/oauth2/v2.1/authorize',
-      # 消した
+      # 消したOK
       }
 
-      # 消した
+      # 消したOK
 
       private
 
@@ -34,19 +34,7 @@ module OmniAuth
         full_host + script_name + callback_path
       end
 
-      def verify_id_token
-        @id_token_payload ||= client.request(:post, 'https://api.line.me/oauth2/v2.1/verify',
-          {
-            body: {
-              id_token:  access_token['id_token'],
-              client_id: options.client_id,
-              nonce:     session.delete("omniauth.nonce")
-            }
-          }
-        ).parsed
-        
-        @id_token_payload
-      end
+      # 消した
     end
   end
 end
