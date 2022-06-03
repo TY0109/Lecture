@@ -11,24 +11,10 @@ module OmniAuth
       option :client_options, {
         site:          'https://api.line.me',
         authorize_url: 'https://access.line.me/oauth2/v2.1/authorize',
-        token_url:     '/oauth2/v2.1/token'
+      # 消した
       }
 
-      uid do
-        raw_info['userId']
-      end
-
-      info do
-        {
-          'user_id'     => raw_info['sub'],
-          'email'       => raw_info['email'],
-          'picture_url' => raw_info['picture'],
-        }
-      end
-
-      def raw_info
-        @raw_info ||= verify_id_token
-      end
+      # 消した
 
       private
 
