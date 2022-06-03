@@ -34,7 +34,7 @@ module OmniAuth
         full_host + script_name + callback_path
       end
 
-      # 消した
+      # 消したOK
     end
   end
 end
