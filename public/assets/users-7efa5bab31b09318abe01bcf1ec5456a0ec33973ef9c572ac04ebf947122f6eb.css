@@ -1,0 +1,19 @@
+/* line 2, app/assets/stylesheets/users.scss */
+#users-table th {
+  vertical-align: middle;
+}
+
+/* line 6, app/assets/stylesheets/users.scss */
+#users-table td {
+  vertical-align: middle;
+}
+
+/* line 11, app/assets/stylesheets/users.scss */
+.user {
+  text-align: center;
+}
+
+/* line 15, app/assets/stylesheets/users.scss */
+.posts-index-item {
+  padding-left: 10px;
+}
