@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+ruby '2.6.10'
+
+gem 'rails', '5.1.7'
+gem 'mysql2', '~> 0.5'
 gem 'bcrypt'
 gem 'devise-i18n'
 gem 'puma'
@@ -22,14 +25,11 @@ gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
 gem 'dotenv-rails'
 
-
-
-
-
-
 group :development, :test do
-  gem 'sqlite3', '~> 1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capybara', '~> 2.13'
+  gem 'selenium-webdriver'
+  gem 'rspec-rails', '~> 3.7.2'
 end
 
 group :development do
@@ -38,13 +38,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen'
 end
-
-group :production do
-  gem 'pg', '1.1'
-end
-
-
-
 
 # Windows環境ではtzinfo-dataというgemを含める必要があります
 # Mac環境でもこのままでOKです
