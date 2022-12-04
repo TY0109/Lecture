@@ -116,6 +116,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (2.6.2)
     jwt (2.5.0)
+    libv8-node (16.10.0.0-aarch64-linux)
+    libv8-node (16.10.0.0-arm64-darwin)
+    libv8-node (16.10.0.0-x86_64-linux)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -131,6 +134,8 @@ GEM
     method_source (1.0.0)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
+    mini_racer (0.6.3)
+      libv8-node (~> 16.10.0.0)
     minitest (5.16.3)
     multi_xml (0.6.0)
     mysql2 (0.5.4)
@@ -316,6 +321,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   listen
+  mini_racer
   mysql2 (~> 0.5)
   omniauth-line
   omniauth-rails_csrf_protection
@@ -334,8 +340,5 @@ DEPENDENCIES
   web-console
   will_paginate
 
-RUBY VERSION
-   ruby 2.6.10p210
-
 BUNDLED WITH
-   2.3.25
+   2.3.26
