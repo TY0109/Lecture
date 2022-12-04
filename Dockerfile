@@ -1,4 +1,4 @@
-FROM ruby:2.6.10
+FROM ruby:2.6.9
 
 # node.jsとyarnのインストール
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
