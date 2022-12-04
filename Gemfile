@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.6.10'
-
 gem 'rails', '5.1.7'
 gem 'mysql2', '~> 0.5'
 gem 'bcrypt'
@@ -24,6 +22,9 @@ gem 'devise'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
 gem 'dotenv-rails'
+
+# ciのtest失敗(ExecJS::RuntimeUnavailable)への対応
+gem 'mini_racer'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
