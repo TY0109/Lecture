@@ -1,0 +1,158 @@
+<% provide(:title, @post.title) %>
+
+<h1>授業の詳細</h1>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-bordered" id="post-table">
+      <tbody>
+        <tr>
+          <th class="active col-md-2">大学名</th>
+           <td class="col-md-10"><%= @post.university %></td>
+        </tr>
+        <tr>
+          <th class="active col-md-2">学部名</th>
+          <td class="col-md-10"><%= @post.department %></td>
+        </tr>
+        <tr>
+          <th class="active col-md-2">学科名</th>
+          <td class="col-md-10"><%= @post.branch %></td>
+        </tr>
+        <tr>
+          <th class="active">授業名</th></th>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <th class="active">詳細</th>
+          <td>
+            <%= auto_link(safe_join(@post.description.split("\n"),tag(:br))) %>
+          </td>
+        </tr> 
+        <tr>
+          <th class="active">作成日</th>
+          <td><%=l(@post.created_at,format: :long)%></td>
+        </tr>
+        <tr>
+          <th class="active">更新日</th>
+          <td><%=l(@post.updated_at, format: :long) %></td>
+        </tr> 
+      </tbody>
+    </table>
+     
+    <!-- 写真の表示 -->
+    <div class="img-area">
+      <%= image_tag @post.img.url if @post.img.present? %>
+    </div>
+    
+    <!-- いいね -->
+    <% if current_user.admin? || current_user.email == "guest@email.com" %>
+      <%= link_to '#', disabled: true do %>
+        <span class="fa fa-heart unliked-btn">︎</span>
+      <% end %>
+    <!-- TODO: DRYにしたい -->
+    <% else %>
+      <% if @post.like?(current_user) %>
+        <%= link_to post_like_path(@post), method: :delete do %>
+          <span class="fa fa-heart liked-btn">︎</span>
+        <% end %>
+      <% else %>
+        <%= link_to post_likes_path(@post), method: :post do %>
+          <span class="fa fa-heart unliked-btn">️</span>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= @likes_count %>
+     
+    <div class="btn-wrapper">
+      <% if @post.user_id == current_user.id  %>
+        <%=link_to "編集", edit_post_path,class:"btn btn-lg btn-success" %>
+        <%=link_to "削除", post_path, method: :delete, data: {confirm: "「#{@post.title}」を削除します。よろしいですか？"}, class:"btn btn-lg btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- 元コメント・返信 -->
+<div id="comments_area">
+  <h4 class="comment-area">コメント・質問</h4>
+  <% @comments.each do |comment| %>
+    <% if comment.parent_id.present? || comment.id.blank? %>
+      <% next %>
+    <% end %>
+    <hr>
+    <!-- 元のコメント表示 -->
+    <p><%= comment.user.name %>:<%= comment.content %></p>
+    <p>質問作成日時:<%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+    <!-- 返信表示 -->
+    <div id="reply area">
+      <% comment.replies.order(:created_at).each do |reply| %>
+      <p><%= reply.user.name %>:<%= reply.content %></p>
+      <% end %>
+    </div>
+    <!-- 返信投稿用フォーム -->
+    <%= form_with(model: [@post, @comment_reply]) do |f| %> 
+      <div class="row">
+        <div class="form-group col-md-3">
+          <p><label>返信</label></p>
+          <% if current_user.admin? || current_user.email == "guest@email.com" %>
+            <!-- TODO disabled="disabled"を付与するかどうかの差だけなのでDRYにしたい -->
+            <textarea class="form-control input-form" name="comment[content]" rows="2" disabled="disabled"><%= @comment_reply.content %></textarea>
+          <% else %>
+            <textarea class="form-control input-form" name="comment[content]" rows="2"><%= @comment_reply.content %></textarea>
+          <% end %>
+        </div>
+      </div>
+      <%= f.hidden_field :parent_id, value: comment.id %>
+      <%= f.hidden_field :post_id, value: @post.id %>
+      <%= f.submit %>
+    <% end %>
+  <% end %>
+  
+  <!-- 元コメント投稿用フォーム -->
+  <%= form_with(model: [@post, @comment]) do |f| %> 
+    <div class="row">
+      <div class="form-group col-md-3">
+        <p><label class="new-sread">新しいスレッド</label></p>
+        <% if current_user.admin? || current_user.email == "guest@email.com" %>
+          <!-- TODO disabled="disabled"を付与するかどうかの差だけなのでDRYにしたい -->
+          <textarea class="form-control input-form" name="comment[content]" rows="5" disabled="disabled"><%= @comment.content %></textarea>
+        <% else %>
+          <textarea class="form-control input-form" name="comment[content]" rows="5"><%= @comment.content %></textarea>
+        <% end %>
+        <%= f.hidden_field :post_id, value: @post.id %>
+        <%= f.submit%>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%
+=begin%>
+ ・何も元コメントがない時
+@commentsは、
+[#<Comment id: nil, content: "", user_id: nil, post_id: 2, created_at: nil, updated_at: nil, parent_id: nil>,  users#showで、@post.comments.buildしていることで作成されている分(@commentの分)
+→ next
+
+#<Comment id: nil, content: "", user_id: nil, post_id: 2, created_at: nil, updated_at: nil, parent_id: nil>]> users#showで、@post.comments.buildしていることで作成されている分(@reply_commentの分)
+→ next
+
+
+・元コメントが1個だけある時
+@commentsは、
+[#<Comment id: 1, content: "元コメント1", user_id: 4, post_id: 3, created_at: "2024-05-07 04:53:11", updated_at: "2024-05-07 04:53:11", parent_id: nil>,  createされた分
+→ 内容、作成日時、返信フォーム表示
+
+#<Comment id: nil, content: "", user_id: nil, post_id: 3, created_at: nil, updated_at: nil, parent_id: nil>, users#showで、@post.comments.buildしていることで作成されている分(@commentの分)
+→ next
+
+#<Comment id: nil, content: "", user_id: nil, post_id: 3, created_at: nil, updated_at: nil, parent_id: nil>]> users#showで、@post.comments.buildしていることで作成されている分(@reply_commentの分)
+→ next 
+<%
+=end%>
+
+
+<%
+=begin%>
+ 今回のform_withは、タスクアプリなどカリキュラム通りに書けば、以下
+<%= form_with(model: @comment_reply, url: post_comments_path(@post), local: true) do |f| %> 
+<%
+=end%>

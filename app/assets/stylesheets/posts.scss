@@ -1,0 +1,68 @@
+//いいねボタン//
+
+// .unliked-btnのcolorを「#8899a6」にしてください
+.unliked-btn{
+  color:#8899a6;
+}
+
+
+// .liked-btnのcolorを「#ff2581」にしてください
+.liked-btn{
+  color:#ff2581;
+}
+
+
+// ここに指定されたCSSを貼り付けてください
+.fa {
+  font-size: 16px;
+  margin-right: 3px;
+}
+
+
+//投稿一覧//
+.search-form{
+  margin-top:-10px;
+  margin-bottom:20px;
+}
+
+.posts-index-item{
+  box-shadow: 0 2px 6px #c1ced7;
+  padding-top:10px;
+  padding-bottom:10px;
+  margin-top:20px;
+}
+
+
+.post-lecture-info{
+  padding-left:30px;
+}
+
+
+.post-make-title{
+   
+}
+
+
+.form-short{
+  width:30%;
+}
+
+
+.img-area{
+  padding-top:10px;
+}
+
+//投稿詳細//
+.btn-wrapper{
+  float:right;
+}
+
+
+.comment-area{
+  text-align:left;
+}
+
+.new-sread{
+  border-top: dashed black;
+  margin-top:20px;
+}

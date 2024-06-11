@@ -1,0 +1,44 @@
+<% provide(:title, "投稿一覧") %>
+
+<div class="row">
+  <div class="col-md-11 col-md-offset-0.5">
+    <div class="main posts-index">
+      <div class="container">
+        <div class="search">
+          <p>大学名、学部名のみでも検索できます（例.A大学　経済学部）</p>
+          <div class="search-form">
+            <%= search_form_for @search, url:posts_path do |f| %>
+              <%=f.label:university %>
+              <%=f.text_field :university_eq %><br>
+              
+              <%=f.label:department %>
+              <%=f.text_field :department_eq %>
+              <%= f.submit %>
+            <% end %>
+          </div>
+        </div>
+        <% @posts.each do |post| %>
+          <div class="posts-index-item">
+            <div class="post-user-name">
+              <%= link_to post.user.name, user_path(post.user.id) %>
+            </div>
+            <div class="post-lecture-info">
+              <%= post.university %>
+              <%= post.department %>
+              <%= post.branch %><br>
+              <%= link_to post.title, post_path(post.id) %><br>
+              <%= post.description %>
+              <!--写真の表示-->
+              <% if post.img.present? %>
+                <div class="img-area" %>
+                  <%= image_tag post.img.url %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+  </div>
+</div>
