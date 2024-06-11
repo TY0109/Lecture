@@ -25,3 +25,4 @@
 # 追記
 /.env
 vendor/bundle
+public/uploads/
